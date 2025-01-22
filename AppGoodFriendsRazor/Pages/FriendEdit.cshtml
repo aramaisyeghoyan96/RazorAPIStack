@@ -1,0 +1,109 @@
+﻿@page
+@model AppGoodFriendsRazor.Pages.FriendEdit
+@{
+}
+
+<!-- Page view-friend-detail -->
+      <div class="container px-4 py-4" id="view-friend">
+        <h2 class="pb-2 border-bottom">@Model.Friend.FirstName @Model.Friend.LastName</h2>
+        
+        <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
+            <div class="col-md-7 col-lg-8">
+              <form method="post" class="needs-validation" novalidate>
+                <input asp-for="@Model.Friend.FriendId" type="hidden" value="@Model.Friend.FriendId" />
+                <input asp-for="@Model.Friend.addressIM.AddressId" type="hidden" value="@Model.Friend.addressIM.AddressId" />
+
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="firstName" class="form-label">First name</label>
+                    <input asp-for="@Model.Friend.FirstName" type="text" class="form-control" id="firstName" value="@Model.Friend.FirstName" required>
+                    <span asp-validation-for="@Model.Friend.FirstName"></span>
+                    <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  </div>
+      
+                  <div class="col-sm-6">
+                    <label for="lastName" class="form-label">Last name</label>
+                    <input asp-for="@Model.Friend.LastName" type="text" class="form-control" id="lastName" value="@Model.Friend.LastName" required>
+                    <span asp-validation-for="@Model.Friend.LastName"></span>
+                    <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  </div>
+
+                   <div class="col-sm-6">
+                    <label for="Email" class="form-label">Email</label>
+                    <input asp-for="@Model.Friend.Email" type="Email" class="form-control" id="Email" value="@Model.Friend.Email" required>
+                    <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <label for="birthday" class="form-label">Birthday</label>
+                    <input asp-for="@Model.Friend.Birthday" type="birthday" class="form-control" id="birthday" value="@Model.Friend.Birthday" required>
+                    <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  </div>
+
+                  <div class="row g-3 visible">
+                    <div class="col-12">
+                      <label for="address" class="form-label">Address</label>
+                      <input asp-for="@Model.Friend.addressIM.StreetAddress" type="text" class="form-control" id="address" value="@Model.Friend.addressIM.StreetAddress" required>
+                      <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    </div>
+        
+                    <div class="col-md-3">
+                      <label for="zip" class="form-label">Zip</label>
+                      <input asp-for="@Model.Friend.addressIM.ZipCode" type="text" class="form-control" id="zip" value="@Model.Friend.addressIM.ZipCode" required>
+                      <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="city" class="form-label">City</label>
+                      <input asp-for="@Model.Friend.addressIM.City" type="text" class="form-control" id="city" value="@Model.Friend.addressIM.City" required>
+                      <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    </div>
+        
+                    <div class="col-md-5">
+                      <label for="country" class="form-label">Country</label>
+                      <input asp-for="@Model.Friend.addressIM.Country" type="text" class="form-control" id="country" value="@Model.Friend.addressIM.Country" required>
+                  </div>
+                </div>
+                </div>
+
+              <button asp-page-handler="Edit" class="w-100 btn btn-primary btn-lg my-4" type="submit">Save changes</button>
+              </form>            
+            </div>
+
+
+
+@section Scripts
+{
+  <partial name="_ValidationScriptsPartial" />
+
+  <script>
+    
+    (() => {
+    'use strict'
+
+    const forms = document.querySelectorAll('.needs-validation')
+
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit')
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })();
+
+</script>
+}
